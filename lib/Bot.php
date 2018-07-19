@@ -25,7 +25,8 @@ class Bot
             $message .= 'Просмотры: ' . $data['last']['v'] . "\n";
             $message .= 'Дочитывания: ' . $data['last']['vte'] . "\n";
             $message .= 'Качество: ' . $data['quality'] . "\n";
-            $message .= 'Интерес: ' . $data['interest'] . "\n\n";
+            $message .= 'Интерес: ' . $data['interest'] . "\n";
+            $message .= 'Прогноз: ' . $data['forecast'] . "\n\n";
         }
 
         $params = array(

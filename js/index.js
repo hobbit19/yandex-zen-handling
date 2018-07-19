@@ -20,6 +20,7 @@ $(document).ready(function () {
         $("#lastVte").html(data.last.vte);
         $("#interest").html(data.interest);
         $("#quality").html(data.quality);
+        $("#forecast").html(data.forecast);
 
         Highcharts.setOptions({
             global : {

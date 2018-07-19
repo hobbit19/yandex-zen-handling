@@ -67,10 +67,41 @@ class DataGetter
 
             $tmp['interest'] = ($totalFs > 0 ? round($totalViews * 100 / $totalFs, 2) : 0) . '%';
             $tmp['quality'] = ($totalViews > 0 ? round($totalViewsTillEnd * 100 / $totalViews, 2) : 0) . '%';
+            $tmp['forecast'] = self::_getForecast($data);
 
         }
 
 
         return $tmp;
+    }
+
+    private static function _getForecast($data)
+    {
+        $config = Config::get('config');
+
+        if ($config['show_goal_count'] === false)
+            return '-';
+
+        $arr = array_reverse($data);
+        $yesturday = date("Y-m-d", strtotime( '-1 days' ));
+        $first = $second = 0;
+
+        foreach ($arr as $k => $item) {
+            if ($k == 0)
+                $first = $item['vte'];
+            if (substr($item['date_formatted'], 0, 14) == $yesturday . ' 00:') {
+                $second = $item['vte'];
+                break;
+            }
+
+        }
+
+        $diff = $first - $second;
+
+        if ($diff <= 0)
+            return '-';
+
+
+        return round(($config['goal'] - $first) / $diff, 2) . ' дн до ' . $config['goal'] . ' дочитываний (' . $diff . ' в день)';
     }
 }

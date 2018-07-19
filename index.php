@@ -57,12 +57,16 @@ $profiles = Config::get('profiles');
                 <td><div id="lastVte"></div></td>
             </tr>
             <tr>
+                <th>Качество</th>
+                <td><div id="quality"></div></td>
+            </tr>
+            <tr>
                 <th>Интерес</th>
                 <td><div id="interest"></div></td>
             </tr>
             <tr>
-                <th>Качество</th>
-                <td><div id="quality"></div></td>
+                <th>Прогноз</th>
+                <td><div id="forecast"></div></td>
             </tr>
         </table>
     </div>

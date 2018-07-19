@@ -68,32 +68,4 @@ class Request
 
         } else die('Curl error!');
     }
-
-    public function getKarma($login, $password)
-    {
-        $result = $this->send($login, $password, true);
-        $ch = $result['ch'];
-
-        curl_setopt($ch, CURLOPT_URL, 'https://zen.yandex.ru/profile/editor/id/' . $result['userPublisher'] . '/karma');
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-        $response = curl_exec($ch);
-
-        $html = str_get_html($response);
-
-        foreach($html->find('textarea#csrfToken') as $e)
-            $text = htmlspecialchars_decode(trim($e->innertext));
-
-        curl_setopt($ch, CURLOPT_URL, 'https://zen.yandex.ru/media-api/get-user-karma?publisherId=' . $result['userPublisher']);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-Csrf-Token' => $text));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-        $response = curl_exec($ch);
-
-        curl_close($ch);
-
-        var_dump($response);
-
-
-    }
 }
