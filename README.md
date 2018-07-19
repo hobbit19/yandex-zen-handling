@@ -9,9 +9,10 @@
 	<li>
 		config
 		<ul>
-			<li>bot.php</li>	
-			<li>db.php</li>	
-			<li>profiles.php</li>	
+			<li>bot.php - настройки бота для Телеграм</li>	
+			<li>config.php - настройки для выдачи прогноза дочитываний</li>
+			<li>db.php - настройки подключения к БД</li>	
+			<li>profiles.php - список аккаунтов в Дзене</li>	
 		</ul>
 	</li>
 	<li>
