@@ -16,6 +16,7 @@ class Logger
         $channel->setWheres(array('=', 'login', "'" . $data['user']['login'] . "'"));
 
         $updateData = array(
+            'channelId' => $data['userPublisher']['id'],
             'login' => $data['user']['login'],
             'name' => $data['userPublisher']['name']
         );

@@ -21,6 +21,7 @@ class Bot
         foreach ($profiles as $item) {
             $data = DataGetter::get($item['login']);
             $message .= 'Канал: ' . $item['login'] . "\n";
+            $message .= 'Ссылка: ' . 'https://zen.yandex.ru/id/' . $data['channelId'] . "\n";
             $message .= 'Лента: ' . $data['last']['fs'] . "\n";
             $message .= 'Просмотры: ' . $data['last']['v'] . "\n";
             $message .= 'Дочитывания: ' . $data['last']['vte'] . "\n";
@@ -40,6 +41,10 @@ class Bot
             curl_setopt($ch, CURLOPT_POST, true);
             curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
 
+            if ($this->_config['use_ssl'] == 0) {
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            }
+
             // использовать прокси
             if ($this->_config['use_proxy'] == 1) {
 
@@ -49,7 +54,12 @@ class Bot
                     curl_setopt($ch, CURLOPT_PROXYUSERPWD, $this->_config['proxy_password']);
             }
 
-            curl_exec($ch);
+            $resp = curl_exec($ch);
+
+            if ($resp === false) {
+                echo 'Error while sending message: ' . curl_error($ch);
+            }
+
             curl_close($ch);
 
         } else die('Error curl');

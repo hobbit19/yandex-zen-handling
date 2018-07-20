@@ -68,6 +68,7 @@ class DataGetter
             $tmp['interest'] = ($totalFs > 0 ? round($totalViews * 100 / $totalFs, 2) : 0) . '%';
             $tmp['quality'] = ($totalViews > 0 ? round($totalViewsTillEnd * 100 / $totalViews, 2) : 0) . '%';
             $tmp['forecast'] = self::_getForecast($data);
+            $tmp['channelId'] = $data[0]['channelId'];
 
         }
 

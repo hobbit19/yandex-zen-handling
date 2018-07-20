@@ -94,6 +94,7 @@ DROP TABLE IF EXISTS `zen_channels` CASCADE;
 -- CREATE TABLE "zen_channels" ---------------------------------
 CREATE TABLE `zen_channels` ( 
 	`id` Int( 11 ) AUTO_INCREMENT NOT NULL,
+	`channelId` VarChar( 50 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
 	`login` VarChar( 50 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
 	`name` VarChar( 255 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
 	PRIMARY KEY ( `id` ) )
