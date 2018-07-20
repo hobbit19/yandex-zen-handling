@@ -82,18 +82,16 @@ class DataGetter
         if ($config['show_goal_count'] === false)
             return '-';
 
-        $arr = array_reverse($data);
-        $yesturday = date("Y-m-d", strtotime( '-1 days' ));
-        $first = $second = 0;
+        $maxCount = sizeof($data) - 1;
+        $first = $data[$maxCount]['vte'];
+        $yesturdayDate = substr($data[$maxCount]['date_formatted'], 0, 10);
+        $yesturday = date("Y-m-d", strtotime( '-1 days', strtotime($yesturdayDate)));
 
-        foreach ($arr as $k => $item) {
-            if ($k == 0)
-                $first = $item['vte'];
+        foreach ($data as $k => $item) {
             if (substr($item['date_formatted'], 0, 14) == $yesturday . ' 00:') {
                 $second = $item['vte'];
                 break;
             }
-
         }
 
         $diff = $first - $second;
