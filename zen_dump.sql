@@ -102,6 +102,19 @@ CHARACTER SET = utf8
 COLLATE = utf8_general_ci
 ENGINE = InnoDB
 AUTO_INCREMENT = 1;
+
+-- CREATE TABLE "zen_commands" ---------------------------------
+CREATE TABLE `zen_commands` (
+	`id` Int( 11 ) AUTO_INCREMENT NOT NULL,
+	`messageId` Int( 11 ) NOT NULL,
+	`date` VarChar( 24 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+	`text` VarChar( 50 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+	PRIMARY KEY ( `id` ) )
+CHARACTER SET = utf8
+COLLATE = utf8_general_ci
+ENGINE = InnoDB
+AUTO_INCREMENT = 1;
+
 -- -------------------------------------------------------------
 -- ---------------------------------------------------------
 

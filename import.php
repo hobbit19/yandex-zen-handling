@@ -7,7 +7,7 @@ include 'bootstrap.php';
 use lib\Config;
 use lib\Request;
 use lib\Logger;
-use lib\Bot;
+use lib\commands\Getstats;
 
 $profiles = Config::get('profiles');
 
@@ -32,6 +32,6 @@ if (sizeof($profiles) > 0) {
      *  Отправка статистики в телеграм бот
      */
 
-    $bot = new Bot();
-    $bot->getStats($profiles);
+    $command = new Getstats();
+    $command->run();
 }
