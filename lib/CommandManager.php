@@ -14,7 +14,7 @@ class CommandManager
         if ($currentCommand !== false) {
             $message = new Command();
             $message->setWheres(array('=', 'messageId', "'" . $result['message']['message_id'] . "'"));
-            $res = $message->read();
+            $res = $message->read()->fetch();
 
             if ($res === false) {
 
