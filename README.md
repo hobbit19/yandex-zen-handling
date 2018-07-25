@@ -37,15 +37,24 @@
 		lib
 		<ul>
 			<li>
+				commands
+				<ul>
+					<li>Getstats.php</li>
+					<li>Runnable.php</li>
+				</ul>
+			</li>
+			<li>
 				entities
 				<ul>
 					<li>Channel.php</li>	
+					<li>Command.php</li>
 					<li>Period.php</li>	
 					<li>Publication.php</li>	
 					<li>Table.php</li>
 				</ul>
 			</li>	
 			<li>Bot.php</li>	
+			<li>CommandManager.php</li>
 			<li>Config.php</li>	
 			<li>DataGetter.php</li>
 			<li>Logger.php</li>
@@ -57,6 +66,7 @@
 	</li>
 	<li>bootstrap.php</li>
 	<li>getdata.php</li>
+	<li>getupdates.php</li>
 	<li>import.php</li>
 	<li>index.php</li>
 	<li>zen_dump.sql</li>
@@ -65,5 +75,6 @@
 
 Как пользоваться
 
-1) Для запуска отправки отчётов в бот нужно повесить на крон скрипт import.php
-2) Для просмотра графика статистики нужно открыть проект в браузере http://[ИМЯ-ДОМЕНА]/index.php 
+1) Для запуска отправки отчётов в бот нужно повесить на крон скрипт import.php (например, на каждый час)
+2) Для просмотра графика статистики нужно открыть проект в браузере http://[ИМЯ-ДОМЕНА]/index.php
+3) Для запуска наблюдателя за очередью команд нужно повесить на крон скрипт getupdates.php (например, на каждую минуту)
