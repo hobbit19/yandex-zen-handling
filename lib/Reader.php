@@ -18,4 +18,17 @@ class Reader
 
         return $db->query($query)->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function readPubs($channelId, $data)
+    {
+        $db = MysqlDriver::getConnection();
+        $query = 'select * 
+                  from `zen_data` zd
+                  join `zen_channels` zc on zc.id = zd.channel_id                    
+                  where zc.channelId = \''. $channelId .'\'
+                  and zd.has_published = 1
+                  and DATE_FORMAT(FROM_UNIXTIME(zd.created_at), \'%Y-%m-%d\') IN ('. implode(',', $data) . ')';
+
+        return $db->query($query)->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

@@ -68,6 +68,10 @@ $profiles = Config::get('profiles');
                 <th>Прогноз</th>
                 <td><div id="forecast"></div></td>
             </tr>
+            <tr>
+                <th>Публикации за неделю</th>
+                <td><div id="pubs"></div></td>
+            </tr>
         </table>
     </div>
 

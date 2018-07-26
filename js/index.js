@@ -21,6 +21,7 @@ $(document).ready(function () {
         $("#interest").html(data.interest);
         $("#quality").html(data.quality);
         $("#forecast").html(data.forecast);
+        $("#pubs").html(data.pubs);
 
         Highcharts.setOptions({
             global : {

@@ -2,6 +2,8 @@
 
 namespace lib;
 
+use PDO;
+
 class DataGetter
 {
     public static function get($login)
@@ -69,6 +71,7 @@ class DataGetter
             $tmp['quality'] = ($totalViews > 0 ? round($totalViewsTillEnd * 100 / $totalViews, 2) : 0) . '%';
             $tmp['forecast'] = self::_getForecast($data);
             $tmp['channelId'] = $data[0]['channelId'];
+            $tmp['pubs'] = self::_getPubs($data);
 
         }
 
@@ -102,5 +105,33 @@ class DataGetter
 
 
         return round(($config['goal'] - $first) / $diff, 2) . ' дн до ' . $config['goal'] . ' дочитываний (' . $diff . ' в день)';
+    }
+
+    private static function _getPubs($data)
+    {
+        $dateArr = $tmp = array();
+
+        foreach ($data as $item) {
+            $date = substr($item['date_formatted'], 0, 10);
+            $newDate = '\'' . $date . '\'';
+            if (!in_array($newDate, $dateArr)) {
+                $dateArr[] = $newDate;
+            }
+        }
+
+        if (sizeof($dateArr) > 0) {
+
+            $reader = new Reader();
+
+            $data = $reader->readPubs($data[0]['channelId'], $dateArr);
+
+            if (sizeof($data) > 0) {
+                foreach ($data as $pub) {
+                    $tmp[] = '<div><small>' . date('d-m-Y H:i', $pub['created_at']) . '</small> <div>'. $pub['title'] . '</div></div><hr>' ;
+                }
+            }
+        }
+
+        return $tmp;
     }
 }

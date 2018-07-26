@@ -13,6 +13,7 @@ abstract class Table
     private $wheres = '1=1';
     private $order = '';
     private $groupby = '';
+    private $showSql = false;
 
     public function __construct()
     {
@@ -47,6 +48,11 @@ abstract class Table
         $this->groupby = $groupby;
     }
 
+    public function setShowSql($option)
+    {
+        $this->showSql = $option;
+    }
+
     public function create($data)
     {
         $columns = $values = array();
@@ -79,6 +85,9 @@ abstract class Table
 
 
         $query = 'SELECT ' . $this->fields . ' FROM ' . $this->name . ' ' . $this->joins . ' WHERE ' . $whereStr . ' ' . $this->order . ' ' . $this->groupby;
+
+        if ($this->showSql)
+            echo $query;
 
         return $this->_db->query($query);
     }
