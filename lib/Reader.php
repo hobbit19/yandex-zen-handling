@@ -22,7 +22,10 @@ class Reader
     public function readPubs($channelId, $data)
     {
         $db = MysqlDriver::getConnection();
-        $query = 'select * 
+        $query = 'select zd.created_at, zd.title,
+                  (select MAX(zp.feed_shows) from `zen_periods` zp WHERE zp.data_id = zd.id) as feed_shows,
+                  (select MAX(zp.views) from `zen_periods` zp WHERE zp.data_id = zd.id) as views,
+                  (select MAX(zp.views_till_end) from `zen_periods` zp WHERE zp.data_id = zd.id) as views_till_end 
                   from `zen_data` zd
                   join `zen_channels` zc on zc.id = zd.channel_id                    
                   where zc.channelId = \''. $channelId .'\'

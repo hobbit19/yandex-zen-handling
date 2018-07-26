@@ -21,3 +21,13 @@ ul li:hover, ul li.active {
 #profiles input {
     display: none;
 }
+
+.pubDiv {
+    padding: 10px;
+    font-size: .8em;
+}
+.pubDiv div {
+    float: left;
+    margin-right: 10px;
+    width: 100px;
+}

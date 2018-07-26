@@ -21,7 +21,17 @@ $(document).ready(function () {
         $("#interest").html(data.interest);
         $("#quality").html(data.quality);
         $("#forecast").html(data.forecast);
-        $("#pubs").html(data.pubs);
+
+        $("#pubs").html(data.pubs.map(function(pub) {
+            return '<div class="pubDiv">' +
+                        '<div>' + pub[1] + '</div>' +
+                        '<div>' + pub[0] + '</div>' +
+                        '<div>' + pub[2] + '</div>' +
+                        '<div>' + pub[3] + '</div>' +
+                        '<div>' + pub[4] + '</div>' +
+                    '</div>' +
+                '<div style="clear: both"></div>';
+        }));
 
         Highcharts.setOptions({
             global : {

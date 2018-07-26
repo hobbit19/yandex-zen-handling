@@ -70,7 +70,17 @@ $profiles = Config::get('profiles');
             </tr>
             <tr>
                 <th>Публикации за неделю</th>
-                <td><div id="pubs"></div></td>
+                <td>
+                    <div class="pubDiv">
+                        <div><strong>Название</strong></div>
+                        <div><strong>Дата создания</strong></div>
+                        <div><strong>Лента</strong></div>
+                        <div><strong>Просмотры</strong></div>
+                        <div><strong>Дочитывания</strong></div>
+                    </div>
+                    <div style="clear: both"></div>
+                    <div id="pubs"></div>
+                </td>
             </tr>
         </table>
     </div>

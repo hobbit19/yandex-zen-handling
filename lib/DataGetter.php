@@ -126,8 +126,15 @@ class DataGetter
             $data = $reader->readPubs($data[0]['channelId'], $dateArr);
 
             if (sizeof($data) > 0) {
+
                 foreach ($data as $pub) {
-                    $tmp[] = '<div><small>' . date('d-m-Y H:i', $pub['created_at']) . '</small> <div>'. $pub['title'] . '</div></div><hr>' ;
+                    $tmp[] = array(
+                        date('d-m-Y H:i', $pub['created_at']),
+                        $pub['title'],
+                        $pub['feed_shows'],
+                        $pub['views'],
+                        $pub['views_till_end']
+                    );
                 }
             }
         }
